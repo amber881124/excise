@@ -1,34 +1,13 @@
-# 寫一個function來印出誰的成績是第二高，如果超過一個人分數都是第二高，請把人名一行一行印出來。
-# students：一個二維清單，例如 [['Jerry', 88], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 90]] 
-# 不須回傳
-
-# 期望的執行結果：
-# students = [['Jerry', 88], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 90]]  
-# second_highest(students)印出：
-# Tom
-# Harsh
-
-# 重要提示：
-# 不一定要，但可以使用sorted這個function來排列清單，
-# x = [3, 1, 4, 5, 2]
-# x = sorted(x) # 排列x (由小到大)
-# print(x) # 印出 [1, 2, 3, 4, 5]
-# 如果要顛倒排列也可以，只要多加reverse=True
-# x = [3, 1, 4, 5, 2]
-# x = sorted(x, reverse=True) # 排列x (由大到小)
-# print(x) # 印出 [5, 4, 3, 2, 1]
-
-
-from operator import itemgetter
-
-
 students = [['Jerry', 88], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 90]]  
 
 
 def second_highest(students):
-    students = sorted(students, reverse = True, key = itemgetter(1))
-    for name, score in students:
-        if score == students[1][1]:
-            print(name)
+    score = [s[1] for s in students]
+    score = sorted(score, reverse = True)
+    second_score = score[1]
+    second_high_student = [s[0] for s in students if s[1] == second_score]
+    for student in second_high_student:
+        print(student)
+
 
 second_highest(students)    
