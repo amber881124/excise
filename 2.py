@@ -19,16 +19,16 @@
 # print(x) # 印出 [5, 4, 3, 2, 1]
 
 
-students = [['Jerry', 100], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 100]]  
+from operator import itemgetter
+
+
+students = [['Jerry', 88], ['Justin', 84], ['Tom', 90], ['Akriti', 92], ['Harsh', 90]]  
 
 
 def second_highest(students):
-    new = []
+    students = sorted(students, reverse = True, key = itemgetter(1))
     for name, score in students:
-        new.append([score, name])
-    new = sorted(new, reverse = True)
-    for score, name in new:
-        if score == new[1][0]:
+        if score == students[1][1]:
             print(name)
 
 second_highest(students)    
