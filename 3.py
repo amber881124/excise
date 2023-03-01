@@ -6,7 +6,7 @@ def count_products(data):
     for d in data:
         item, num = d.split()
         num = int(num)
-        if item in products.keys():
+        if item in products:
             products[item] += num  
         else:
             products[item] = num
